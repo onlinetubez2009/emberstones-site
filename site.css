@@ -396,3 +396,8 @@ a.update img { aspect-ratio: 16 / 9; object-fit: cover; }
   .tl time { margin-bottom: 6px; }
 }
 .hero-home + .section { padding-top: clamp(32px, 5vw, 64px); }
+
+/* 26 Nov: the ember stone icon in the header and footer (the wide logo is on the home page only) */
+.brand img.brand-icon, .brand-icon { width: 48px; height: 48px; display: block; }
+@media (max-width: 400px) { .brand img.brand-icon { width: 40px; height: 40px; } }
+.footer-top img.footer-icon { width: 48px; height: 48px; }
