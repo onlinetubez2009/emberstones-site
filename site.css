@@ -15,6 +15,7 @@
   --catacomb: #8fdcab;
   --inferno: #ff5a2e;
   --archives: #4fd1c5;
+  --mines: #be82ff;
   --discord: #5865f2;
 
   --font-display: "Pixelify Sans", "Courier New", monospace;
@@ -137,7 +138,7 @@ p { margin: 0 0 1em; max-width: 64ch; }
 .band { background: var(--soot-deep); border-block: 2px solid var(--basalt); }
 
 /* ---------- home hero ---------- */
-.hero-home { position: relative; overflow: hidden; padding: clamp(56px, 9vw, 120px) 0 clamp(56px, 8vw, 96px); }
+.hero-home { position: relative; overflow: hidden; padding: clamp(40px, 7vw, 88px) 0 clamp(40px, 6vw, 72px); }
 .hero-home::before { /* ember glow behind the logo */
   content: ""; position: absolute; inset: -20% -10% auto; height: 120%;
   background: radial-gradient(60% 50% at 50% 35%, rgba(255,138,42,.16), transparent 70%);
@@ -156,7 +157,7 @@ p { margin: 0 0 1em; max-width: 64ch; }
 @media (max-width: 800px) { .hero-logo { width: 492px; } }
 @media (max-width: 540px) { .hero-logo { width: 369px; } }
 @media (max-width: 400px) { .hero-logo { width: 246px; } }
-.hero-home h1 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); margin-top: 1.6rem; max-width: 26ch; font-weight: 500; color: var(--ash); }
+.hero-home h1 { font-size: clamp(1.7rem, 3.6vw, 2.6rem); margin-top: 1.4rem; font-weight: 600; color: var(--ash); text-shadow: 0 3px 0 rgba(0,0,0,.5); }
 .hero-home .btn-row { justify-content: center; }
 .embers { position: absolute; inset: 0; pointer-events: none; }
 .embers i {
@@ -331,3 +332,67 @@ p { margin: 0 0 1em; max-width: 64ch; }
 .closer .kicker { font-family: var(--font-display); color: var(--ember); font-size: 1.15rem; }
 a.frame { display: block; }
 a.frame:hover { box-shadow: 0 0 0 2px var(--ember), 0 24px 60px rgba(0,0,0,.55); }
+
+/* ---------- 26 Nov: news pill, hero line, section heads ---------- */
+.news-pill {
+  display: inline-flex; align-items: center; gap: 10px; margin-bottom: 1.6rem;
+  font-family: var(--font-display); font-size: 1rem; color: var(--ash); text-decoration: none;
+  background: rgba(15, 11, 10, .72); padding: 6px 14px 6px 6px; box-shadow: inset 0 0 0 2px var(--seam);
+}
+.news-pill span { background: var(--archives); color: #062523; padding: 2px 8px; }
+.news-pill:hover { color: var(--flare); box-shadow: inset 0 0 0 2px var(--archives); }
+.hero-sub { max-width: 46ch; margin: .8rem auto 0; font-size: 1.15rem; color: var(--ash); text-shadow: 0 2px 0 rgba(0,0,0,.6); }
+.section-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; }
+.section-head h2 { margin: 0; }
+
+/* ---------- 26 Nov: the descent's bosses and camps, and the next biome ---------- */
+.biome-meta { display: flex; flex-wrap: wrap; gap: 6px 28px; margin: 14px 0 0; font-size: .95rem; }
+.biome-meta div { display: flex; gap: 8px; }
+.biome-meta dt { font-family: var(--font-display); color: var(--c); }
+.biome-meta dd { margin: 0; color: var(--ash); }
+.biome[data-biome="mines"] { --c: var(--mines); }
+.biome--next { opacity: .78; }
+.biome--next h3 { flex-wrap: wrap; }
+.soon { font-size: .85rem; padding: 2px 8px; background: transparent; color: var(--mines); box-shadow: inset 0 0 0 2px var(--mines); }
+
+/* ---------- 26 Nov: update cards (home) ---------- */
+.updates { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+a.update { display: grid; grid-template-rows: auto 1fr; text-decoration: none; color: var(--ash); box-shadow: 0 0 0 2px var(--basalt-hi); }
+a.update:hover { box-shadow: 0 0 0 2px var(--ember); color: var(--ash); }
+a.update img { aspect-ratio: 16 / 9; object-fit: cover; }
+.update-body { padding: 16px 20px 20px; }
+.update-body time, .tl time { font-family: var(--font-display); color: var(--ember); font-size: .95rem; }
+.update-body h3 { margin: .3em 0 .3em; font-size: 1.3rem; }
+.update-body p { margin: 0; color: var(--cinder); }
+@media (max-width: 960px) { .updates { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .updates { grid-template-columns: 1fr; } }
+
+/* ---------- 26 Nov: the updates timeline ---------- */
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 150px; top: 8px; bottom: 8px; width: 2px; background: var(--basalt-hi); }
+.tl { --c: var(--ember); position: relative; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 0 44px; padding: 0 0 44px; }
+.tl[data-biome="stone"] { --c: var(--stone); }
+.tl[data-biome="catacombs"] { --c: var(--catacomb); }
+.tl[data-biome="inferno"] { --c: var(--inferno); }
+.tl[data-biome="archives"] { --c: var(--archives); }
+.tl::before { /* the marker on the rail: a square, bigger and glowing for a chapter */
+  content: ""; position: absolute; left: 146px; top: 6px; width: 10px; height: 10px; background: var(--c);
+}
+.tl--big::before { left: 142px; top: 2px; width: 18px; height: 18px; box-shadow: 0 0 16px var(--c); }
+.tl time { padding-top: 2px; color: var(--c); }
+.tl-body h2 { font-size: 1.5rem; margin: 0 0 .3em; }
+.tl--big .tl-body h2 { font-size: clamp(1.8rem, 3.4vw, 2.4rem); color: var(--c); }
+.tl-body .lede { font-size: 1.08rem; margin: 0; }
+.tl-body ul { margin: .7rem 0 0; padding-left: 1.2em; color: var(--cinder); }
+.tl-body li { margin-bottom: .35em; }
+.tl-body li::marker { color: var(--c); }
+.tl-art { width: min(100%, 720px); height: auto; margin-bottom: 18px; border: 2px solid var(--seam); }
+.tl:target .tl-body h2 { text-decoration: underline; text-decoration-color: var(--c); text-underline-offset: 6px; }
+@media (max-width: 720px) {
+  .timeline::before { left: 5px; }
+  .tl { grid-template-columns: minmax(0, 1fr); padding-left: 32px; }
+  .tl::before { left: 1px; }
+  .tl--big::before { left: -3px; }
+  .tl time { margin-bottom: 6px; }
+}
+.hero-home + .section { padding-top: clamp(32px, 5vw, 64px); }
