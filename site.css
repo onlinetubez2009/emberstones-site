@@ -401,3 +401,9 @@ a.update img { aspect-ratio: 16 / 9; object-fit: cover; }
 .brand img.brand-icon, .brand-icon { width: 48px; height: 48px; display: block; }
 @media (max-width: 400px) { .brand img.brand-icon { width: 40px; height: 40px; } }
 .footer-top img.footer-icon { width: 48px; height: 48px; }
+
+/* 26 Nov: the Play button inside the phone menu keeps the button look (the menu link style was turning its text grey) */
+.nav a.btn, .nav a.btn:hover { color: var(--fg); border-bottom: 0; }
+@media (max-width: 820px) {
+  .nav a.btn { font-size: 1.2rem; padding: .75em 1.25em calc(.75em + 4px); }
+}
